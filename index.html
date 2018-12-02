@@ -4,13 +4,77 @@
 <meta charset="UTF-8" />
 <link href="./css.css" rel="StyleSheet" type="text/css" />
 <title>My www practice site</title>
+
+  <script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
 </head>
 <body>
 
 <h1>WWW Practice</h1>
+   
   
-<img src= "images/bonobo.jpg" alt="image of me">
-<p>Me right now</p>
+<div id="Location">
+	<div id= "Locator">
+
+	
+	<button onclick="getLocation()">Your coordinates</button>
+
+<p id="test"></p>
+
+<script>
+var x = document.getElementById("test");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+			
+
+		<div id= "Left">
+		<div id="Left2">
+	
+		</div>	
+		</div>	
+
+		<div id= "Right">
+		<div id="Right2">
+	
+		</div>
+		</div>
+		<div id= "Loc">
+	
+
+			
+		</div>
+	</div>
+</div>
+ <div class="monkey"> 
+<div class="image1"><a href="images/bonobo.jpg"><img src="images/bonobo.jpg" alt="picture of me"/></a></div>
+<div class= "text1"><p>Me trying to learn about websites</p></div>
+</div>
+ 
+
 <table>
 <caption>My progress with this assigment</caption>
 <tr>
@@ -43,8 +107,12 @@
 <td>x</td>
 </tr>
 </table>
+
+<br>
 <nav class="navbar">
-<hX>What I achieved with the time I could have used for this</hX>
+
+<ul>
+<li><h2>What I achieved with the time I could have used for this</h2>
 <ul>
     <li>Studies
         <ul>
@@ -60,7 +128,42 @@
         <ul>
             <li>Got some extra sleep
         </ul>
-    </ul>
+    </ul></ul>
 </nav>
+<br>
+<div class = "snd">
+  <audio controls>
+  <source src="MyCode.oga" type="audio/ogg">
+</audio></div>
+
+<div class = "vid">
+<video width="400" controls>
+  <source src="seels.mp4" type="video/mp4">
+</video></div>
+
+  <form action="/my-handling-form-page" method="post">
+  <div>
+    <label for="name">Give me a grade:</label>
+    <input type="text" id="name" name="user_name" value="5" />
+  </div>
+  <div>
+    <label for="msg">Reasoning:</label>
+    <textarea id="msg" name="user_message"></textarea>
+  </div>
+  <div class="button">
+  <button type="submit">SUBMIT</button>
+</div>
+</form>
+
+<p>Drag the Zebra into the rectangle:</p>
+
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+<img id="drag1" src="images/zebra.jpg" alt="a wild zebra" draggable="true"
+ondragstart="drag(event)" width="480" height="360"></div>
+
+
 </body>
 </html>
